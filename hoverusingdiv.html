@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Div Transformation Example</title>
+<style>
+  .outer-div {
+    width: 500px;
+    height: 500px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    transition: all 8s ease;
+  }
+
+  .middle-div {
+    width: 350px;
+    height: 350px;
+     
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    transition: all 8s ease;
+  }
+
+  .inner-div {
+    width: 250px;
+    height: 250px;
+     
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    transition: all 8s ease;
+    cursor: pointer;
+  }
+
+  .rotate {
+    transform: rotate(360deg);
+  }
+</style>
+</head>
+<body><center>
+<div class="outer-div">
+  <div class="middle-div">
+    <div class="inner-div" id="innerDiv"></div>
+  </div>
+</div></center>
+<script>
+  const innerDiv = document.getElementById("innerDiv");
+
+  innerDiv.addEventListener("click", () => {
+    const divs = document.querySelectorAll(".outer-div, .middle-div, .inner-div");
+    
+    divs.forEach((div, index) => {
+      div.style.borderColor = getColor(index);
+      div.classList.add("rotate");
+    });
+  });
+
+  function getColor(index) {
+    const colors = ["red", "blue", "green"];
+    return colors[index % colors.length];
+  }
+</script>
+</body>
+</html>
