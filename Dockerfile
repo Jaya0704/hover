@@ -1,6 +1,4 @@
-FROM ubuntu
-RUN apt-get update
-RUN apt-get -y install apache2
-COPY build/ /var/www/html/
-
-ENTRYPOINT apachectl -D FOREGROUND
+FROM nginx:alpine
+COPY . /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx","-g","daemon off;"]
